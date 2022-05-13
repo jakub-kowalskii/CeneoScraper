@@ -19,20 +19,20 @@ recommendation = opinions["recommendation"].value_counts(dropna=False).sort_inde
 recommendation.plot.pie(
     label="",
     autopct = lambda p: '{:.1f}%'.format(round(p)) if p > 0 else '',
-    colors = ["red", "greeen", "grey"],
+    colors = ["crimson", "forestgreen", "lightskyblue"],
     labels = ["Polecam", "Nie polecam","Nie mam zdania"]
 )
 plt.title("Rekomendacje")
-plt.savefig(f"plots/{product_id}_recommendations.png")
+plt.savefig(f"plots/{item_id}_recommendations.png")
 plt.close()
 
 stars = opinions["stars"].value_counts().sort_index().reindex(list(np.arange(0,5.5,0.5)), fill_value=0)
 stars.plot.bar(
-    colors = "pink"
+    color = "pink"
 )
 plt.xlabel("Liczba gwiazdek")
 plt.ylabel("Liczba opinii")
 plt.grid(True, axis="y")
-plt.xsticks(rotation=0)
-plt.savefig(f"plots/{product_id}_stars.png")
+plt.xticks(rotation=0)
+plt.savefig(f"plots/{item_id}_stars.png")
 plt.close()
